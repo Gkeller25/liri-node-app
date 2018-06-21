@@ -1,0 +1,15 @@
+my-tweets, N/A
+{"date":"Tue Jun 19 21:09:46 +0000 2018","text":"I will also be including an api for spotify as well"}
+------------------------------------------------------------------------------------------------------
+{"date":"Tue Jun 19 21:08:40 +0000 2018","text":"it will take use the twitter api and when my-tweets is typed into the command line it will so the last twenty tweets"}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+{"date":"Tue Jun 19 21:10:37 +0000 2018","text":"The last api that i will include will be omdb api"}
+----------------------------------------------------------------------------------------------------
+{"date":"Tue Jun 19 21:07:38 +0000 2018","text":"The assignment is to build an app that runs only in node.js command line"}
+---------------------------------------------------------------------------------------------------------------------------
+{"date":"Tue Jun 19 21:06:50 +0000 2018","text":"These tweets are not real and I'm doing them for an assignment"}
+-----------------------------------------------------------------------------------------------------------------
+{"date":"Tue Jun 19 20:28:49 +0000 2018","text":"Just setting up my Twitter. #myfirstTweet"}
+--------------------------------------------------------------------------------------------
+{"date":"Tue Jun 19 21:09:05 +0000 2018","text":"it will also show when they were created too."}
+------------------------------------------------------------------------------------------------
