@@ -7,65 +7,87 @@ var fs = require("fs");
 //sets the variable to make it easier to access the keys ie. client.options.consumer_secret
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
+var spacing = "___________________________________________________________________________________";
+var logSpacing = "***********************************************************************************";
+var inquirer = require('inquirer');
 
-var action = process.argv[2];
-var item = process.argv[3];
-
+inquirer.prompt([
+    {
+        type: "list",
+        message: "What do you want to do? \n",
+        choices: ["my-tweets", "spotify-this-song", "movie-this", "do-what-it-says", new inquirer.Separator()],
+        name: "Commands",
+        suffix: "Choose one of the Following Commands to see your tweets, look for a song, a movie, or randomly do a command."
+      },
+]).then(function(inquirerResponse) {
+    console.log(spacing);
+    var action = inquirerResponse.Commands;
+    if(inquirerResponse.Commands === "my-tweets"){
+        var item = "N/A";
+        work(action, item);
+    }
+else if(inquirerResponse.Commands === "do-what-it-says"){
+var item = "N/A";
 work(action, item);
 
-
+}else{
+        inquirer.prompt([
+        {
+            type: "input",
+            message: "What do you want to look for?",
+            name: "searchTerm",
+            default: ""
+        }
+        ]).then(function(inquirerResult) {
+        
+            console.log(spacing);
+var item = inquirerResult.searchTerm;
+work(action, item);
+        })
+    }
+});
 
 function work(action, item){
-
 switch(action){
-//This will show your last 20 tweets and when they were created at in your terminal/bash window.    
-case "my-tweets": 
-if(item === undefined){
-    var item = "N/A";
+   
+    case "my-tweets": 
+    
     tweetList();
     logInput(action, item);
-} else {
-    tweetList();
-    logInput(action, item)};
-break;
-//will search the song input into the command line but will only search what is inside parenthesis
-case "spotify-this-song": 
-if(item === undefined){
-     var item = "The Sign Ace of Base";
-    music(item);
-    logInput(action, item);
- } else{
-    music(item);
-    logInput(action, item);
- }
-break;
-//
-case "movie-this":
-if(item === undefined){
-    var item = "Mr. Nobody";
-   movies(item);
-   logInput(action, item);
-} else{
-   movies(item);
-   console.log(item);
-   logInput(action, item);
-}
-break;
-//
-case "do-what-it-says": 
-if(item === undefined){
-    var item = "N/A";
+
+    break;
+    
+    case "spotify-this-song": 
+    
+    if(item === ""){
+         var item = "The Sign Ace of Base";
+        music(item);
+        logInput(action, item);
+     } else{
+        music(item);
+        logInput(action, item);
+     }
+    break;
+    
+    case "movie-this":
+    
+    if(item === ""){
+        var item = "Mr. Nobody";
+       movies(item);
+       logInput(action, item);
+    } else{
+       movies(item);
+       logInput(action, item);
+    }
+    break;
+    
+    case "do-what-it-says": 
     random();
     logInput(action, item);
-} else {
-    random();
-    logInput(action, item)};
-break;
-
-default: console.log("Not a Valid option!");
+    break;
+    
+    }
 }
-}
-
 //how should it look inside the Console?
 function tweetList(){
     
@@ -77,8 +99,10 @@ function tweetList(){
         date: tweets[i].created_at,
         text: tweets[i].text
       };
-   console.log(JSON.stringify(newTweets));
+   
    var result = JSON.stringify(newTweets);
+   console.log(newTweets);
+   console.log(spacing);
    log(result);
     }
 });
@@ -89,7 +113,12 @@ function music(item){
 spotify
   .search({ type: 'track', query: item , limit: '1' })
   .then(function(response) {
-   
+   if(response.tracks.items[0] === undefined){
+       console.log("no results found!");
+       var result = "no results found!";
+       log(result);
+       console.log(spacing);
+   } else {
     var song ={
      artist: response.tracks.items[0].artists[0].name,
      title: response.tracks.items[0].name,
@@ -97,9 +126,10 @@ spotify
      album: response.tracks.items[0].album.name
     };
     console.log(song);
+    console.log(spacing);
     var result = JSON.stringify(song);
     log(result);
-  })
+   } })
   .catch(function(err) {
     console.log(err);
   });
@@ -111,30 +141,31 @@ function movies(item){
 var movieName = item.replace(/\s/g, '+');
 
     var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=trilogy";
-console.log(queryUrl);
+
 request(queryUrl, function(error, response, body) {
 
    
         if (!error && response.statusCode === 200) {
           
+          if(JSON.parse(body).Ratings[1]=== undefined){
+              var tomato = "N/A";
+          } else {
+              var tomato = JSON.parse(body).Ratings[1].Value;
+          }
           var newMovie = {
               title: JSON.parse(body).Title,
               year: JSON.parse(body).Year,
-              //wouldn't it be better to have a combined rating section that shows all the different ratings they have received?
               imdb_rating: JSON.parse(body).imdbRating,
-              rotten_tomatoes: JSON.parse(body).Ratings[1].Value,
+              rotten_tomatoes: tomato,
               country: JSON.parse(body).Country,
               language: JSON.parse(body).Language,
               plot: JSON.parse(body).Plot,
               actors: JSON.parse(body).Actors
           }
           console.log(newMovie);
-          console.log(JSON.stringify(newMovie));
+          console.log(spacing);
           var result = JSON.stringify(newMovie);
           log(result);
-          //if(item === undefined){
-              //console.log("If you haven't watched 'Mr. Nobody,' then you should: <http://www.imdb.com/title/tt0485947/>")
-         // }
         }
       });
 }
@@ -147,17 +178,12 @@ function random(){
           return console.log(error);
         }
           
-        console.log(data);
-        
+        console.log(data);       
         var dataArr = data.split(",");
         console.log(dataArr);
         var newAction = dataArr.shift();
         var newItem = dataArr.pop();
         work(newAction, newItem);
-
-        
-        
-        
     });
 }
 
@@ -167,15 +193,19 @@ function logInput(action, item){
         if (err) {
         return console.log(err);
       } 
-      console.log(action + ":" + item);
+      
       
     });
-    //
+
 }
 
 //function to append result to file
  function log(result) {
-    fs.appendFile("log.txt", result + "\r\n", function(err) {
+    console.log(result.length);
+    var divider = "-";
+    var logDivider = divider.repeat(result.length);
+
+    fs.appendFile("log.txt", result + "\r\n" + logDivider + "\r\n", function(err) {
         if (err) {
             return console.log(err);
           } 

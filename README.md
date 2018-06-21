@@ -22,3 +22,6 @@ The `my-tweets` command does not require an additional argument and when ran wil
 The `do-what-it-says` command will run one of the other commands depending on what is inside random.txt(new commands must be entered in a specific format. Example: spotify-this-song,"I Want it That Way").
 
 All the commands, arguments, and results, that are accepted, will be appended to log.txt to see what was done.
+
+
+
