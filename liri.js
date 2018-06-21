@@ -8,13 +8,14 @@ var fs = require("fs");
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 var spacing = "___________________________________________________________________________________";
-var colors = require('colors');
+var colors = require('colors/safe');
+var error = colors.red;
 var inquirer = require('inquirer');
 
 inquirer.prompt([
     {
         type: "list",
-        message: "What do you want to do? \n",
+        message: "What do you want to do?",
         choices: ["my-tweets", "spotify-this-song", "movie-this", "do-what-it-says", new inquirer.Separator()],
         name: "Commands",
         suffix: "Choose one of the Following Commands to see your tweets, look for a song, a movie, or randomly do a command."
@@ -114,10 +115,9 @@ spotify
   .search({ type: 'track', query: item , limit: '1' })
   .then(function(response) {
    if(response.tracks.items[0] === undefined){
-       console.log(colors.red("no results found!"));
+       console.log(error("no results found!"));
        var result = "no results found!";
        log(result);
-       console.log(spacing);
    } else {
     var song ={
      artist: response.tracks.items[0].artists[0].name,

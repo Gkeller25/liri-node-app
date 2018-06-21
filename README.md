@@ -19,3 +19,4 @@ All the commands, arguments, and results, that are accepted, will be appended to
 
 
 
+message: "What do you want to do? \n",
