@@ -8,7 +8,7 @@ var fs = require("fs");
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 var spacing = "___________________________________________________________________________________";
-var logSpacing = "***********************************************************************************";
+var colors = require('colors');
 var inquirer = require('inquirer');
 
 inquirer.prompt([
@@ -114,7 +114,7 @@ spotify
   .search({ type: 'track', query: item , limit: '1' })
   .then(function(response) {
    if(response.tracks.items[0] === undefined){
-       console.log("no results found!");
+       console.log(colors.red("no results found!"));
        var result = "no results found!";
        log(result);
        console.log(spacing);

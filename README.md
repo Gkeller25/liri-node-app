@@ -1,25 +1,19 @@
 # liri-node-app
 
-This assignment is made using Node.js utilizing the command line to run and make requests to different api's depending on what is entered into the command line.
+This assignment is made using Node.js utilizing the command line to run and make requests to different api's depending on what how the prompts answered in the command line.
 
 API's used: Twitter Api, Spotify Api, and OMDBapi.
 
 There is a total of 4 command options available.
-* `my-tweets`
+* `my-tweets` This command will return the users last 20 tweets.
 
-* `spotify-this-song`
+* `spotify-this-song` This command and its additional prompt will search spotify for a track.
 
-* `movie-this`
+* `movie-this` This command and its additional prompt will search OMDB for a movie.
 
-* `do-what-it-says`
+* `do-what-it-says` This command will run whatever command and additional parameters are found in random.txt. Must be in proper format of <spotify-this-song,"I Want it That Way">.
 
-To use these commands you must enter them into the command line exactly.
-
-In addition to typing these commands, the `spotify-this-song` and `movie-this` commands allow for an additional argument to be entered. 
-That additional argument will be what is searched for in the API's and to correctly use the arguments in the case of more than one word in your argument, the argument must be inside quotation marks.
-
-The `my-tweets` command does not require an additional argument and when ran will return the users last 20 tweets.
-The `do-what-it-says` command will run one of the other commands depending on what is inside random.txt(new commands must be entered in a specific format. Example: spotify-this-song,"I Want it That Way").
+The app will prompt you to make a choice of the above mentioned choices. Once a choice is made the user will then be prompted to input a string to be searched, only the `spotify-this-song` and `movie-this` commands will prompt the additional string. The results will be logged in the Command line.
 
 All the commands, arguments, and results, that are accepted, will be appended to log.txt to see what was done.
 
