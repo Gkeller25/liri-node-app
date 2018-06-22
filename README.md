@@ -4,7 +4,7 @@ This assignment is made using Node.js utilizing the command line to run and make
 
 **Start**: To begin the app, open the command line and enter `node liri.js`
 
-![PNG of Start](images/CaptureStart.png)
+![PNG of Start](images/CaptureStart.PNG)
 
 __API's used:__ Twitter Api, Spotify Api, and OMDBapi.
 
@@ -16,7 +16,7 @@ There is a total of 4 command options available.
 
 __Example(s)__
 
-![PNG of Tweets](images/CaptureTweets.png)
+![PNG of Tweets](images/CaptureTweets.PNG)
 
 * `spotify-this-song` This command and its additional prompt will search spotify for a track.
     **Results of Command:**
