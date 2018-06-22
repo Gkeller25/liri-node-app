@@ -12,13 +12,14 @@ There is a total of 4 command options available.
 
 ![Gif of Commands](images/commandScroll.gif)
 
-* `my-tweets` This command will return the users last 20 tweets.
+* `my-tweets` : This command will return the users last 20 tweets.
 
-__Example(s)__
+__Example__
 
 ![PNG of Tweets](images/CaptureTweets.PNG)
 
-* `spotify-this-song` This command and its additional prompt will search spotify for a track.
+* `spotify-this-song` : This command and its additional prompt will search spotify for a track.
+
     **Results of Command:**
 
        * Artist(s)    
@@ -26,9 +27,15 @@ __Example(s)__
        * A preview link of the song from Spotify
        * The album that the song is from
 
+__Example(without search parameter)__
 
+![PNG of Spotify default](images/CaptureSpotify.PNG)
 
-* `movie-this` This command and its additional prompt will search OMDB for a movie.
+__Example(with search parameter)__
+
+![PNG of Spotify](images/CaptureSpotify1.PNG)
+
+* `movie-this` : This command and its additional prompt will search OMDB for a movie.
 
     **Results of Command:**
 
@@ -41,9 +48,20 @@ __Example(s)__
        * Plot of the movie.
        * Actors in the movie.
 
+__Example(without search parameter)__
 
+![PNG of OMDB default](images/CaptureMovie.PNG)
 
-* `do-what-it-says`: This command will run whatever command and additional parameters are found in `random.txt`. Must be in proper format of <spotify-this-song,"I Want it That Way">.
+__Example(with search parameter)__
+
+![PNG of OMDB](images/CaptureMovie1.PNG)
+
+* `do-what-it-says` : This command will run whatever command and additional parameters are found in `random.txt`. Must be in proper format of <spotify-this-song,"I Want it That Way">.
+
+__Example(with additional parameters)__
+
+![PNG of Random](images/CaptureRandom.PNG)
+
 
 The app will prompt you to make a choice of the above mentioned choices. Once a choice is made the user will then be prompted to input a string to be searched, only the `spotify-this-song` and `movie-this` commands will prompt the additional string. The results will be logged in the Command line.
 
