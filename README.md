@@ -5,6 +5,9 @@ This assignment is made using Node.js utilizing the command line to run and make
 __API's used:__ Twitter Api, Spotify Api, and OMDBapi.
 
 There is a total of 4 command options available.
+
+![Gif of Commands](images/commands.gif)
+
 * `my-tweets` This command will return the users last 20 tweets.
 
 * `spotify-this-song` This command and its additional prompt will search spotify for a track.
