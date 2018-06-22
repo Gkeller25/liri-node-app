@@ -174,15 +174,24 @@ var inquirer = require('inquirer');
 
     function logInput(action, item){
 
-        fs.appendFile("log.txt", action + ", " + item + "\r\n", function(err) { 
+        if(action === "do-what-it-says"){
+            fs.appendFile("log.txt","\n" + action + ", " + item, function(err) { 
+                if (err) {
+                    return console.log(err);
+                } 
+            });
+        } else {
+
+        fs.appendFile("log.txt", "\n" + action + ", " + item + "\n\r\n", function(err) { 
             if (err) {
                 return console.log(err);
             } 
         });
     }
+    }
 
     function log(result) {
-        console.log(result.length);
+
         var divider = "-";
         var logDivider = divider.repeat(result.length);  
         fs.appendFile("log.txt", result + "\r\n" + logDivider + "\r\n", function(err) {
