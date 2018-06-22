@@ -2,13 +2,19 @@
 
 This assignment is made using Node.js utilizing the command line to run and make requests to different api's depending on what how the prompts answered in the command line.
 
+**Start** To begin the app, open the command line and enter `node liri.js`
+
+![Start](images/CaptureStart.png)
+
 __API's used:__ Twitter Api, Spotify Api, and OMDBapi.
 
 There is a total of 4 command options available.
 
-![Gif of Commands](images/commands.gif)
+![Gif of Commands](images/commandScroll.gif)
 
 * `my-tweets` This command will return the users last 20 tweets.
+                        __Example__
+![Tweets](images/CaptureTweets.png)
 
 * `spotify-this-song` This command and its additional prompt will search spotify for a track.
     **Results of Command:**
@@ -16,6 +22,8 @@ There is a total of 4 command options available.
        * The song's name     
        * A preview link of the song from Spotify
        * The album that the song is from
+
+
 
 * `movie-this` This command and its additional prompt will search OMDB for a movie.
     **Results of Command:**
@@ -27,6 +35,8 @@ There is a total of 4 command options available.
        * Language of the movie.
        * Plot of the movie.
        * Actors in the movie.
+
+
 
 * `do-what-it-says` This command will run whatever command and additional parameters are found in `random.txt`. Must be in proper format of <spotify-this-song,"I Want it That Way">.
 
